@@ -1,4 +1,8 @@
 <nav>
+    <form action="" method="get">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
     <ul>
     <li><a href = "{% url 'movies:allFilmGenre' %}">All films</a></li>
     {% for genre in links %}

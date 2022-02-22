@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'movies',
     'crispy_forms',
     'crispy_bootstrap5',
+    'search_app',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [str(BASE_DIR.joinpath('templates')),
                 str(BASE_DIR.joinpath('accounts', 'templates')), 
-                str(BASE_DIR.joinpath('movies', 'templates'))],
+                str(BASE_DIR.joinpath('movies', 'templates')),
+                str(BASE_DIR.joinpath('search_app', 'templates')),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

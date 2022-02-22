@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Genre, Film
 from django.views.generic import ListView, DetailView
-
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 class FilmGenre(ListView):
     model = Film
@@ -16,6 +16,20 @@ class FilmGenre(ListView):
             films = Film.objects.all().filter(available = True)
 
         return render(request,"movies/genre.html",{'genre':genre, 'films':films})
+
+'''Paginator code '''
+paginator = Paginator(products, 6)
+try:
+    page = int(request.Get.get('page', '1'))
+except:
+    page = 1
+try:
+    products = paginator.page(page)
+except (EmptyPage, InvalidPage):
+    products = paginator.page(paginator.num_pages)
+
+
+
 
 
 class FilmDetail(DetailView):
