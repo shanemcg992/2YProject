@@ -18,7 +18,7 @@ class Genre(models.Model):
         verbose_name_plural = 'genres'
 
     def get_absolute_url(self):
-        return reverse('shop:films_by_genre', args=[self.id])
+        return reverse('movies:films_by_genre', args=[self.id])
     
     def __str__(self):
         return self.name
@@ -43,7 +43,7 @@ class Film(models.Model):
         verbose_name_plural = 'films'
 
     def get_absolute_url(self):
-        return reverse('shop:film_detail', args=[self.genre.id, self.id])
+        return reverse('movies:film_detail', args=[self.genre.id, self.id])
     
     def __str__(self):
         return self.name

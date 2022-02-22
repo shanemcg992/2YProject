@@ -16,13 +16,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings - unsuitable for filmion
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in filmion secret!
 SECRET_KEY = 'django-insecure-!&o=pn6)91&g=h46n=6kpzj*cdjd*1vsq&i7)^pl-b53aw_hx-'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in filmion!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -59,7 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [str(BASE_DIR.joinpath('templates')),
-                str(BASE_DIR.joinpath('accounts', 'templates'))],
+                str(BASE_DIR.joinpath('accounts', 'templates')), 
+                str(BASE_DIR.joinpath('movies', 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'movies.context_processors.menu_links',
             ],
         },
     },

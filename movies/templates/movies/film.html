@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+{{ film.description|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+{{ film.name }} - Perfect Cushion Store
+{% endblock %}
+{% block content %}
+<div>
+<div>
+<p><a href="{% url 'movies:allFilmGenre' %}">Home</a> | <a href="{{
+film.genre.get_url }}">{{film.genre}}</a> | {{film.name}}</p>
+</div>
+<div>
+<br>
+<div>
+<div>
+<div>
+<img src="{{film.image.url}}"
+alt="{{film.name}}">
+</div>
+</div>
+<div>
+<div>
+<h1>{{film.name}}</h1>
+<p>£{{film.price}}</p>
+<p>film Description</p>
+<p>{{film.description}}</p>
+{% if film.stock == 0%}
+<p><b>Out of Stock</b></p>
+{% else %}
+<a href="">Add to Cart</a>
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
