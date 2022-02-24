@@ -4,32 +4,31 @@
 {{ film.description|truncatewords:155 }}
 {% endblock %}
 {% block title %}
-{{ film.name }} - Perfect Cushion Store
+{{ film.name }} - Movie Rental Store
 {% endblock %}
 {% block content %}
-<div>
-    <div>
-        <p><a href="{% url 'movies:allFilmGenre' %}">Home</a> | <a href="{{
-film.genre.get_url }}">{{film.genre}}</a> | {{film.name}}</p>
+<div class="row my_film_row_class">
+    <div class="mx-auto">
+        <p><a href="{% url 'movies:allFilmGenre' %}">Home</a> | <a href="{{film.genre.get_absolute_url }}">{{film.genre}}</a> | {{film.name}}</p>
     </div>
-    <div>
+    <div class="container">
         <br>
-        <div>
-            <div>
-                <div>
-                    <img src="{{film.image.url}}" alt="{{film.name}}">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <div style="min-width: 18rem;">
+                    <img src="{{film.image.url}}" alt="{{film.name}}" width="500" height="500">
                 </div>
             </div>
-            <div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                 <div>
-                    <h1>{{film.name}}</h1>
+                    <h1 class="my_film_title">{{film.name}}</h1>
                     <p>£{{film.price}}</p>
-                    <p>film Description</p>
-                    <p>{{film.description}}</p>
+                    <p class="my_title">film Description</p>
+                    <p class="text-justify my_film_text">{{film.description}}</p>
                     {% if film.stock == 0%}
-                    <p><b>Out of Stock</b></p>
+                    <p class="text-justify my_film_text"><b>Out of Stock</b></p>
                     {% else %}
-                    <a href="">Add to Cart</a>
+                    <a class="btn btn-secondary" href="">Add to Basket</a>
                     {% endif %}
                 </div>
             </div>
