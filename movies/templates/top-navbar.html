@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+  
+</head>
+
+<div class="container">
+    <div class="my_custom_menu">
+        <ul>
+            <li>
+                <div class="social-media">
+		    		<p class="mb-0 d-flex">
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="text-dark fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="text-dark fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="text-dark fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+		    		</p>
+	        </div>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">{{ user.username }}
+                    <i class="fas fa-user-circle"></i></a>
+            </li>
+            <li>
+                <a href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+            </li>
+            <li>
+                <a href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
