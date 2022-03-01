@@ -3,6 +3,7 @@ from .models import Genre, Film
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
+
 class FilmGenre(ListView):
     model = Film
 
@@ -15,10 +16,9 @@ class FilmGenre(ListView):
         else:
             films = Film.objects.all().filter(available = True)
 
-        '''Pagination code'''
         paginator = Paginator(films, 6)
         try:
-            page = int(request.Get.get('page', '1'))
+            page = int(request.GET.get('page', '1'))
         except:
             page = 1
         try:
@@ -29,9 +29,6 @@ class FilmGenre(ListView):
         return render(request,"movies/genre.html",{'genre':genre, 'films':films})
 
         
-
-
-
 
 
 class FilmDetail(DetailView):

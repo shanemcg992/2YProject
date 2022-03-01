@@ -36,7 +36,7 @@
 	</div>
 	<br>
 	<div>
-		<h1 class="text-centre my_title">Our films Collection</h1>
+		<h1 class="text-centre my_title text-danger">Our films Collection</h1>
 		<p class="text-justify">Finding the perfect movie for your Friday night can instantly add to the levels of comfort and 
             sense of entertainment for the night. Whether its drama, comedy, action or horror youre looking for, we have it all here at Movie Rental Store.
 			Rent any movie we have available for a small price, or sign up to be a subscriber and rent as many as you like with a one time payment!</p>
@@ -49,7 +49,7 @@
 					<div class="card text-center" style="min-width: 18rem;">
 						<a href="{{film.get_absolute_url}}"><img class="card-img-top my_image" src="{{film.image.url}}" alt="{{film.name}}"></a>
 						<div class="card-body">
-							<h4 class="text-dark">{{film.name}}</h4>
+							<h4 class="text-dark fw-bold">{{film.name}}</h4>
 							<p class="text-dark">€{{film.price}}</p>
 						</div>
 					</div>
