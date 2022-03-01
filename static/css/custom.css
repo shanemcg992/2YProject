@@ -1,4 +1,7 @@
 /****Navbar****/
+.navbarText {
+    color: #A828A8;
+}
 .nav-item {
     letter-spacing: .2em;
     font-size: 14px;
@@ -93,7 +96,7 @@ body {
     }
 .my_custom_menu ul li {
     list-style: none;
-    color: #000;
+    color: white;
     text-transform: uppercase;
     letter-spacing: .2em;
     font-size: 12px;
@@ -102,12 +105,15 @@ body {
     }
 .my_custom_menu ul li a {
     text-decoration: none;
-    color: #000;
+    color: white;
     list-style: none;
     text-transform: uppercase;
     letter-spacing: .2em;
     font-size: 12px;
     }
+.my_custom_menu ul li a:hover {
+    color: #8c52ff;
+}
 
 .social-media {
     display: inline-block; }
@@ -126,8 +132,8 @@ body {
         .social-media p a span {
         color: #4d4d4d; }
         .social-media p a:hover {
-        background: #ff0000;
-        border-color: #ff0000; }
+        background: #8c52ff;
+        border-color: #8c52ff; }
         .social-media p a:hover span {
             color: #fff; }
             .searchform {
@@ -171,3 +177,4 @@ body {
             border: 1px solid rgba(0, 0, 0, 0.1); }
             .form-control:focus, .form-control:active {
                 border-color: #000; }
+                

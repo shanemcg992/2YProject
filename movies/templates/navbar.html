@@ -1,30 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bstarget="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" ariaexpanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse bg-light" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="fw-bold nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Rent
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'movies:allFilmGenre' %}">All Movies</a></li>
+                        <li><a class="fw-bold dropdown-item" href="{% url 'movies:allFilmGenre' %}">All Movies</a></li>
                         {% for genre in links %}
-                            <li><a class="dropdown-item" href="{{genre.get_absolute_url}}"> {{genre.name}}</a></li>
+                            <li><a class="fw-bold dropdown-item" href="{{genre.get_absolute_url}}"> {{genre.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Your Basket</a>
+                    <a class="fw-bold nav-link" href="#">Your Basket</a>
                 </li>
             </ul>
             <form action="{% url 'search_app:searchResult' %}" class="searchform order-lg-last" method="get">
                 <div class="form-group d-flex">
                   <input type="search" class="fw-bold form-control pl-3" placeholder="Search" aria-label="Search" name="q">
-                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                  <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
                 </div>
             </form>
         </div>

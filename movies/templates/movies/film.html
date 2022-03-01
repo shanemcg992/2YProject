@@ -9,7 +9,7 @@
 {% block content %}
 <div class="row my_film_row_class">
     <div class="mx-auto">
-        <p><a href="{% url 'movies:allFilmGenre' %}">Home</a> | <a href="{{film.genre.get_absolute_url }}">{{film.genre}}</a> | {{film.name}}</p>
+        <p class="text-light"><a class="text-light" href="{% url 'movies:allFilmGenre' %}">Home</a> | <a class="text-light" href="{{film.genre.get_absolute_url }}">{{film.genre}}</a> | {{film.name}}</p>
     </div>
     <div class="container">
         <br>
@@ -22,13 +22,13 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                 <div>
                     <h1 class="my_film_title">{{film.name}}</h1>
-                    <p>£{{film.price}}</p>
-                    <p class="my_title">film Description</p>
+                    <p>€{{film.price}}</p>
+                    <h4 class="my_title">Film Description</h4>
                     <p class="text-justify my_film_text">{{film.description}}</p>
                     {% if film.stock == 0%}
-                    <p class="text-justify my_film_text"><b>Out of Stock</b></p>
+                        <p class="text-justify my_film_text"><b>Out of Stock</b></p>
                     {% else %}
-                    <a class="btn btn-secondary" href="">Add to Basket</a>
+                        <a class="btn btn-secondary" href="">Add to Basket</a>
                     {% endif %}
                 </div>
             </div>
