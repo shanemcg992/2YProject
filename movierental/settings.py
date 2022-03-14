@@ -39,9 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'movies',
+    'basket',
+    'stripe',
+    'search_app',
     'crispy_forms',
     'crispy_bootstrap5',
-    'search_app',
+    'order',
+    'vouchers',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +64,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [str(BASE_DIR.joinpath('templates')),
-                str(BASE_DIR.joinpath('accounts', 'templates')), 
-                str(BASE_DIR.joinpath('movies', 'templates')),
-                str(BASE_DIR.joinpath('search_app', 'templates'))],
+                str(BASE_DIR.joinpath('search_app', 'templates')),
+                str(BASE_DIR.joinpath('basket', 'templates')),
+                str(BASE_DIR.joinpath('order', 'templates')),
+                str(BASE_DIR.joinpath('accounts', 'templates'))], 
+                
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'movies.context_processors.menu_links',
+                'basket.context_processors.counter',
             ],
         },
     },
@@ -141,3 +148,9 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STRIPE_SECRET_KEY = 'sk_test_51KdG7dG7umMfGU63V5VvM0S609YHCcA3y2CsSk4jXpJ71v6RIHBx2HHACjnQHPSiUU9JwSlL4mleYvWrdGCkn9EB000qrjbtDN'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51KdG7dG7umMfGU63FOVSgLnN5wzQ1LnHtjPdDCm4060oP7uePS9gmvU37kpiFDimYwUiM3LCcCrCSWc9glMMlzGK00HythOVpj'

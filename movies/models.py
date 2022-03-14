@@ -35,6 +35,7 @@ class Film(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='film', blank=True)
+    stock = models.IntegerField(default=1000)
     available = models.BooleanField(default=True)
 
     class Meta:

@@ -28,7 +28,7 @@
                     {% if film.stock == 0%}
                         <p class="text-justify my_film_text"><b>Out of Stock</b></p>
                     {% else %}
-                        <a class="btn btn-secondary" href="">Add to Basket</a>
+                        <a class="btn btn-secondary" href="{% url 'basket:add_basket' film.id %}">Add to Basket</a>
                     {% endif %}
                 </div>
             </div>

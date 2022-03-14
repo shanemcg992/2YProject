@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+This is the shopping basket page. Proceed to review your items and place the order.
+{% endblock %}
+{% block title %}
+Basket - MovieBuff 
+{% endblock %}
+{% block content %}
+{% if not basket_items %}
+<div>
+	<div class="text-center">
+		<br>
+		<h1 class="text-center my_title">
+			Your shopping basket is empty
+		</h1>
+		<br>
+		<p class="text-center">
+			Please click <a href="{% url 'movies:allFilmGenre' %}">here</a> to continue shopping.
+		</p>
+	</div>
+</div>
+{% else %}
+<div>
+	<div class="text-center">
+		<br>
+		<h1 class="text-center my_title">
+			Your shopping basket
+		</h1>
+		<br>
+	</div>
+</div>
+<div class="row mx-auto">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+		<table class="table my_custom_table">
+			<thead class="my_custom_thead">
+				<tr>
+					<th colspan="5">
+						Your items
+					</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				{% for basket_item in basket_items %}
+				<tr class="my_custom_thead">
+					<td>
+						<a href="{{basket_item.film.get_absolute_url}}"><img src="{{basket_item.film.image.url}}"
+								alt="" class="float-left rounded custom_image"></a>
+					</td>
+					<td class="text-left">
+						{{basket_item.film.name}}
+						<br>
+						Unit Price: €{{basket_item.film.price}}
+						<br>
+						Qty: {{basket_item.quantity}} x €{{basket_item.film.price}}
+					</td>
+					<td>
+						€{{basket_item.sub_total}}
+					</td>
+					{% if basket_item.quantity < basket_item.film.stock %} <td>
+						<a href="{% url 'basket:add_basket' basket_item.film.id %}" class="custom_a"><i
+								class="fas fa-plus-circle custom_icon"></i></a>&nbsp;
+						<a href="{% url 'basket:basket_remove' basket_item.film.id %}" class="custom_a"><i
+								class="fas fa-minus-circle custom_icon"></i></a>&nbsp;
+						<a href="{% url 'basket:full_remove' basket_item.film.id %}" class="custom_icon"><i
+								class="fas fa-trash-alt custom_icon"></i></a>
+						</td>
+						{% else %}
+						<td>
+							&nbsp;<a href="{% url 'basket:basket_remove' basket_item.film.id %}" class="custom_a"><i
+									class="fas fa-minus-circle custom_icon"></i></a>&nbsp;
+							<a href="{% url 'basket:full_remove' basket_item.film.id %}" class="custom_icon"><i
+									class="fas fa-trash-alt custom_icon"></i></a>
+						</td>
+						<td></td>
+						{% endif %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+	<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+		<table class="table my_custom_table">
+			<thead class="my_custom_thead">
+				<tr>
+					<th>
+						Checkout
+					</th>
+				</tr>
+			</thead>
+			<tbody class="my_custom_thead">
+				<tr>
+					<td>
+						Please review your shopping basket items before proceeding with the order payment.
+					</td>
+				</tr>
+				{% if voucher %}
+				<tr class="subtotal">
+					<td>Total</td>
+					<td colspan="4"></td>
+					<td class="num">€{{ total|floatformat:"2" }}</td>
+				</tr>
+				<tr>
+					<td>
+						"{{ voucher.code }}" voucher
+						({{ voucher.discount }}% off)
+					</td>
+					<td colspan="4"></td>
+					<td class="num neg">
+						- €{{ discount|floatformat:"2" }}
+					</td>
+				</tr>
+				<tr class="total">
+					<td>Total</td>
+					<td colspan="4"></td>
+					<td class="num">
+						€{{ new_total|floatformat:"2" }}
+					</td>
+				</tr>
+				{% else %}
+				<tr class="total">
+					<td>Total</td>
+					<td colspan="4"></td>
+					<td class="num">
+						€{{ total|floatformat:"2" }}
+					</td>
+				</tr>
+				{% endif %}
+			</tbody>
+		</table>
+		<p>Apply a voucher:</p>
+		<form action="{% url 'vouchers:apply' %}" method="post">
+			{{ voucher_apply_form }}
+			<input type="submit" value="Apply">
+			{% csrf_token %}
+		</form>
+		</tbody>
+		</table>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ data_key }}"
+				data-amount="{{ stripe_total }}" data-name="MovieBuff" data-description="{{ description }}"
+				data-image="{% static 'images/movie buff.gif' %}" data-locale="auto" data-currency="eur"
+				data-shipping-address="true" data-billing-address="true" data-zip-code="true">
+				</script>
+		</form>
+		<div class="mx-auto">
+			<a href="{% url 'movies:allFilmGenre' %}" class="btn btn-secondary btn-block my_custom_button">Continue
+				Shopping</a>
+		</div>
+	</div>
+</div>
+<br>
+{% endif %}
+{% endblock %}
