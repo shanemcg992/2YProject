@@ -18,10 +18,8 @@ class test_search_bar(unittest.TestCase):
         search = "simpsons"
         output = "no results found"
         
-        
         result = self.search_bar_obj.search(search)
-
-
+        
         self.assertEquals(output, result)
 
     

@@ -27,8 +27,9 @@ class test_sign_in(unittest.TestCase):
     def test_invalid_credentials(self):
 
         details = "test1", "shanemcg992@gmail.com", "21", "layla1", "layla1"
-
         error = "Password invalid. Password must be more than 8 characters long."
+        
+        output = self.sign_in_obj.create_user(error)
 
         self.assertEquals(details,"\n",error)
 
@@ -46,6 +47,7 @@ class test_sign_in(unittest.TestCase):
         details = "projec", "Aaronfinnshane1"
 
         error = "Please enter correct username or password"
+        output = self.sign_in_obj.sign_in(error)
 
         self.assertEquals(error)
 
