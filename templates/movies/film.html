@@ -29,6 +29,7 @@
                         <p class="text-justify my_film_text"><b>Out of Stock</b></p>
                     {% else %}
                         <a class="btn btn-secondary" href="{% url 'basket:add_basket' film.id %}">Add to Basket</a>
+                        <a class="btn btn-secondary" href="{% url 'watchlist:add_watchlist' film.id %}">Add to Watchlist</a>
                     {% endif %}
                 </div>
             </div>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'order',
     'vouchers',
+    'watchlist',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,8 @@ TEMPLATES = [
                 str(BASE_DIR.joinpath('search_app', 'templates')),
                 str(BASE_DIR.joinpath('basket', 'templates')),
                 str(BASE_DIR.joinpath('order', 'templates')),
-                str(BASE_DIR.joinpath('accounts', 'templates'))], 
+                str(BASE_DIR.joinpath('accounts', 'templates')),
+                str(BASE_DIR.joinpath('watchlist','templates'))], 
                 
         'APP_DIRS': True,
         'OPTIONS': {

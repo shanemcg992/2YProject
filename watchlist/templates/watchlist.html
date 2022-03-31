@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+This is the watchlist page. Proceed to review your items.
+{% endblock %}
+{% block title %}
+Watchlist - MovieBuff 
+{% endblock %}
+{% block content %}
+{% if not watchlist_items %}
+<div>
+	<div class="text-center">
+		<br>
+		<h1 class="text-center my_title">
+			Your watchlist is empty
+		</h1>
+		<br>
+		<p class="text-center">
+			Please click <a href="{% url 'movies:allFilmGenre' %}">here</a> to continue browsing our collection.
+		</p>
+	</div>
+</div>
+{% else %}
+<div>
+	<div class="text-center">
+		<br>
+		<h1 class="text-center my_title">
+			Your Watchlist
+		</h1>
+		<br>
+	</div>
+</div>
+<div class="row mx-auto">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+		<table class="table my_custom_table">
+			<thead class="my_custom_thead">
+				<tr>
+					<th colspan="5">
+						Your Films to watch
+					</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				{% for watchlist_item in watchlist_items %}
+				<tr class="my_custom_thead">
+					<td>
+						<a href="{{watchlist_item.film.get_absolute_url}}"><img src="{{watchlist_item.film.image.url}}"
+								alt="" class="float-left rounded custom_image"></a>
+					</td>
+					<td class="text-left">
+						{{watchlist_item.film.name}}
+						<br>
+						Film Price: €{{watchlist_item.film.price}}
+						<br>
+					</td>
+					
+					{% if watchlist_item.quantity < watchlist_item.film.stock %} 
+                        <td>
+                            <a href="{% url 'watchlist:add_watchlist' watchlist_item.film.id %}" class="custom_a"><i
+								class="fas fa-plus-circle custom_icon"></i></a>&nbsp;
+                            <a href="{% url 'watchlist:full_remove' watchlist_item.film.id %}" class="btn btn-secondary btn-block my_custom_button">Already Watched</a>
+						</td>
+					{% else %}
+						<td>
+                            <a href="{% url 'watchlist:full_remove' watchlist_item.film.id %}" class="btn btn-secondary btn-block my_custom_button">Already Watched</a>
+						</td>
+						<td></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
+<br>
+{% endif %}
+{% endblock %}
