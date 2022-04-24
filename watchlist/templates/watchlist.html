@@ -57,10 +57,12 @@ Watchlist - MovieBuff
 					
 					{% if watchlist_item.quantity < watchlist_item.film.stock %} 
                         <td>
-                            <a href="{% url 'watchlist:add_watchlist' watchlist_item.film.id %}" class="custom_a"><i
-								class="fas fa-plus-circle custom_icon"></i></a>&nbsp;
                             <a href="{% url 'watchlist:full_remove' watchlist_item.film.id %}" class="btn btn-secondary btn-block my_custom_button">Already Watched</a>
 						</td>
+						<td>
+                            <a href="{% url 'movies:allFilmGenre' %}" class="btn btn-success btn-block">Watch Movie</a>
+						</td>
+						
 					{% else %}
 						<td>
                             <a href="{% url 'watchlist:full_remove' watchlist_item.film.id %}" class="btn btn-secondary btn-block my_custom_button">Already Watched</a>

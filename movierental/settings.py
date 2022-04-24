@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'movies.context_processors.menu_links',
                 'basket.context_processors.counter',
+                'watchlist.context_processors.counter',
             ],
         },
     },
